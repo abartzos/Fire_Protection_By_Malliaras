@@ -26,8 +26,7 @@ def read_line(connection):
 
 def check_for_fire(data_tup, classifier, database):
     #checks for fire and uploads
-    if classifier.predict(reversed(data_tup[0:2]), 5) 
-    and data_tup[2] > CO_threshold:
+    if classifier.predict(data_tup[0:2][::-1], 5) or data_tup[2] > CO_threshold:
         database.upload(location)
 
 #defines the database class, used later to store data (datetime, loc)
